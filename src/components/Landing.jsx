@@ -45,7 +45,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="w-full bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
+    <nav className="w-full bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 backdrop-blur-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         {/* Left */}
         <div className="flex items-center gap-10">
@@ -132,13 +132,13 @@ export function Hero() {
           Expert in REST APIs, microservices, authentication, databases, GenAI, RAG systems, and autonomous AI agents building fast, reliable, and production-ready applications.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <button 
+          <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             className="px-6 py-3 rounded-lg bg-white text-black font-medium w-full sm:w-auto cursor-pointer hover:bg-gray-100 transition-colors border border-gray-200"
           >
             Hire Me!
           </button>
-          <button 
+          <button
             onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
             className="px-6 py-3 rounded-lg bg-black text-white font-medium w-full sm:w-auto hover:bg-gray-800 transition-colors"
           >

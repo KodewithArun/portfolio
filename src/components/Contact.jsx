@@ -1,7 +1,49 @@
-import { FiMail, FiMapPin, FiSend } from "react-icons/fi";
+import { useState, useRef } from "react";
+import { FiMail, FiMapPin, FiSend, FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+    const formRef = useRef();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        emailjs
+            .sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            )
+            .then(
+                () => {
+                    setSubmitStatus('success');
+                    setIsSubmitting(false);
+                    formRef.current.reset();
+                    
+                    // Clear success message after 5 seconds
+                    setTimeout(() => {
+                        setSubmitStatus(null);
+                    }, 5000);
+                },
+                (error) => {
+                    console.error('EmailJS Error:', error.text);
+                    setSubmitStatus('error');
+                    setIsSubmitting(false);
+                    
+                    // Clear error message after 5 seconds
+                    setTimeout(() => {
+                        setSubmitStatus(null);
+                    }, 5000);
+                }
+            );
+    };
+
     return (
         <section id="contact" className="max-w-7xl mx-auto px-6 py-28 border-t border-gray-100">
             {/* Section Header */}
@@ -73,7 +115,23 @@ export default function Contact() {
 
                 {/* Contact Form */}
                 <div className="lg:col-span-7">
-                    <form className="bg-white border border-gray-100 shadow-sm rounded-3xl p-8 lg:p-10" onSubmit={(e) => e.preventDefault()}>
+                    <form ref={formRef} className="bg-white border border-gray-100 shadow-sm rounded-3xl p-8 lg:p-10" onSubmit={sendEmail}>
+                        
+                        {/* Status Messages */}
+                        {submitStatus === 'success' && (
+                            <div className="mb-6 p-4 rounded-xl bg-green-50 text-green-700 flex items-center gap-3 border border-green-100">
+                                <FiCheckCircle className="text-xl flex-shrink-0" />
+                                <p className="text-sm font-medium">Message sent successfully! I'll get back to you soon.</p>
+                            </div>
+                        )}
+                        
+                        {submitStatus === 'error' && (
+                            <div className="mb-6 p-4 rounded-xl bg-red-50 text-red-700 flex items-center gap-3 border border-red-100">
+                                <FiXCircle className="text-xl flex-shrink-0" />
+                                <p className="text-sm font-medium">Oops! Something went wrong. Please try again later.</p>
+                            </div>
+                        )}
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                             <div className="space-y-2">
                                 <label htmlFor="name" className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -82,6 +140,7 @@ export default function Contact() {
                                 <input
                                     type="text"
                                     id="name"
+                                    name="user_name"
                                     placeholder="John Doe"
                                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
                                     required
@@ -94,6 +153,7 @@ export default function Contact() {
                                 <input
                                     type="email"
                                     id="email"
+                                    name="user_email"
                                     placeholder="john@example.com"
                                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
                                     required
@@ -108,6 +168,7 @@ export default function Contact() {
                             <input
                                 type="text"
                                 id="subject"
+                                name="subject"
                                 placeholder="How can I help you?"
                                 className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
                                 required
@@ -120,6 +181,7 @@ export default function Contact() {
                             </label>
                             <textarea
                                 id="message"
+                                name="message"
                                 rows="5"
                                 placeholder="Tell me about your project..."
                                 className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all resize-none"
@@ -129,10 +191,17 @@ export default function Contact() {
 
                         <button
                             type="submit"
-                            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-gray-800 transition-colors shadow-sm"
+                            disabled={isSubmitting}
+                            className={`w-full sm:w-auto flex items-center justify-center gap-2 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-colors shadow-sm ${
+                                isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-black hover:bg-gray-800"
+                            }`}
                         >
-                            <FiSend className="text-base" />
-                            Send Message
+                            {isSubmitting ? (
+                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            ) : (
+                                <FiSend className="text-base" />
+                            )}
+                            {isSubmitting ? "Sending..." : "Send Message"}
                         </button>
                     </form>
                 </div>
@@ -140,3 +209,4 @@ export default function Contact() {
         </section>
     );
 }
+

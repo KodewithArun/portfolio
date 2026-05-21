@@ -11,7 +11,7 @@ const experiences = [
         logoClassName: "scale-[1.6]",
         logoBg: "bg-white border-gray-200/80",
         duration: "Mar 2026 – Present",
-        location: "Kathmandu, Nepal",
+        location: "Chitwan, Nepal",
         website: "https://technestinnovations.com.np/",
         tags: ["RAG Systems", "Multi-Agent Networks", "Django", "DRF REST APIs", "LLM APIs", "PostgreSQL"],
         description: "Architecting and implementing enterprise-grade AI backends, complex Retrieval-Augmented Generation (RAG) systems, and multi-agent coordination pipelines using Django and Django REST Framework (DRF).",
