@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { FiGithub, FiCode, FiImage } from "react-icons/fi";
+import ruralHealthAIImg from "../assets/images/ruralhealthai.png";
+import agenticRagImg from "../assets/images/agenticragusinglanggraph.png";
+import sqlsAgentImg from "../assets/images/sqlsagent.png";
+import multidocImg from "../assets/images/multidoc.png";
+import movierecImg from "../assets/images/movierecommand.png";
+import churnImg from "../assets/images/customerchurnusingann.jpeg";
+import segKnnImg from "../assets/images/customersegmanation singknn.png";
+import diabetesImg from "../assets/images/dibatiesuisnglogistic.png";
 
 const projects = [
     {
         id: "rural-health-ai",
         title: "Rural Health AI - Smart Healthcare Solutions",
-        image: "", // Add your image path here
+        summary: "AI-driven platform improving rural healthcare access, triage, and scheduling.",
+        image: ruralHealthAIImg,
         github: "https://github.com/arun/rural-health-ai", // Add your GitHub link here
         technologies: ["Django", "LangGraph", "ChromaDB", "Gemini", "SerpAPI", "Celery", "Redis", "PostgreSQL"],
         bullets: [
@@ -18,7 +27,8 @@ const projects = [
     {
         id: "agentic-rag",
         title: "Agentic RAG Using LangGraph",
-        image: "", // Add your image path here
+        summary: "Adaptive RAG pipeline using LangGraph agents for context-aware retrieval.",
+        image: agenticRagImg, // Add your image path here
         github: "https://github.com/arun/agentic-rag", // Add your GitHub link here
         technologies: ["Python", "LangChain", "HuggingFace", "LangGraph", "Gemini", "RAG", "SerpAPI", "FastAPI", "React"],
         bullets: [
@@ -30,7 +40,8 @@ const projects = [
     {
         id: "sql-sage",
         title: "SQL Sage Intelligent DB Agent",
-        image: "", // Add your image path here
+        summary: "Natural-language to SQL assistant that generates optimized, validated queries.",
+        image: sqlsAgentImg, // Add your image path here
         github: "https://github.com/arun/sql-sage", // Add your GitHub link here
         technologies: ["Python", "LangChain", "HuggingFace", "LangGraph", "GROQ", "RAG", "SQLite", "Streamlit"],
         bullets: [
@@ -43,7 +54,8 @@ const projects = [
     {
         id: "multi-doc-chatbot",
         title: "Multi-Document Chatbot",
-        image: "", // Add your image path here
+        summary: "Chatbot that answers queries across PDFs, DOCX, PPTX, XLSX, Markdown and more.",
+        image: multidocImg, // Added multidoc image
         github: "https://github.com/arun/multi-doc-chatbot", // Add your GitHub link here
         technologies: ["Python", "LangChain", "LlamaParse", "HuggingFace", "Chroma", "Groq LLM", "RAG"],
         bullets: [
@@ -56,7 +68,8 @@ const projects = [
     {
         id: "churn-prediction",
         title: "Customer Churn Prediction System Using ANN",
-        image: "", // Add your image path here
+        summary: "ANN-based churn prediction with preprocessing and a Streamlit dashboard.",
+        image: churnImg, // Added churn prediction image
         github: "https://github.com/arun/churn-prediction", // Add your GitHub link here
         technologies: ["Python", "TensorFlow", "Keras", "Scikit-learn", "Streamlit"],
         bullets: [
@@ -69,7 +82,8 @@ const projects = [
     {
         id: "movie-rec",
         title: "Movie Recommendation System",
-        image: "", // Add your image path here
+        summary: "Content-based recommender using TF-IDF and TMDB metadata for posters.",
+        image: movierecImg, // Added movie recommendation image
         github: "https://github.com/arun/movie-rec", // Add your GitHub link here
         technologies: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy", "TMDB API", "Docker"],
         bullets: [
@@ -82,7 +96,8 @@ const projects = [
     {
         id: "customer-seg",
         title: "Customer Segmentation Using K-Means Clustering",
-        image: "", // Add your image path here
+        summary: "K-Means clustering pipeline for customer segmentation and visualization.",
+        image: segKnnImg, // Added customer segmentation image
         github: "https://github.com/arun/customer-seg", // Add your GitHub link here
         technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Seaborn", "Streamlit"],
         bullets: [
@@ -95,7 +110,8 @@ const projects = [
     {
         id: "diabetes-pred",
         title: "Predicting Diabetes with Logistic Regression",
-        image: "", // Add your image path here
+        summary: "Logistic regression model for diabetes risk prediction, served via Flask.",
+        image: diabetesImg, // Added diabetes prediction image
         github: "https://github.com/arun/diabetes-pred", // Add your GitHub link here
         technologies: ["Python", "Scikit-learn", "Pandas", "Seaborn", "Flask"],
         bullets: [
@@ -108,16 +124,18 @@ const projects = [
 ];
 
 export default function Projects() {
-    const [visibleCount, setVisibleCount] = useState(3);
+    const pageSize = 4;
+    const [page, setPage] = useState(1);
+    const totalPages = Math.max(1, Math.ceil(projects.length / pageSize));
 
-    const visibleProjects = projects.slice(0, visibleCount);
+    const startIndex = (page - 1) * pageSize;
+    const visibleProjects = projects.slice(startIndex, startIndex + pageSize);
 
-    const handleViewMore = () => {
-        setVisibleCount((prev) => Math.min(prev + 3, projects.length));
-    };
+    const handlePrev = () => setPage((p) => Math.max(1, p - 1));
+    const handleNext = () => setPage((p) => Math.min(totalPages, p + 1));
 
     return (
-        <section id="projects" className="max-w-7xl mx-auto px-6 py-28 border-t border-gray-100">
+        <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28 border-t border-gray-100">
             {/* Section Header */}
             <div className="mb-20 max-w-3xl">
                 <span className="text-xs uppercase tracking-widest font-semibold text-gray-400 block mb-3 animate-fadeIn">
@@ -133,8 +151,13 @@ export default function Projects() {
             </div>
 
             {/* Projects Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-                {visibleProjects.map((project) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-10">
+                {visibleProjects.map((project) => {
+                    const maxTech = 7;
+                    const displayedTech = project.technologies.slice(0, maxTech);
+                    const hasMoreTech = project.technologies.length > maxTech;
+
+                    return (
                     <a
                         key={project.id}
                         href={project.github}
@@ -143,7 +166,7 @@ export default function Projects() {
                         className="group flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden hover:border-gray-300 hover:shadow-lg transition-all duration-300 cursor-pointer block"
                     >
                         {/* Project Image Placeholder */}
-                        <div className="w-full h-56 bg-gray-50 border-b border-gray-100 flex items-center justify-center relative overflow-hidden">
+                        <div className="w-full h-40 sm:h-48 md:h-56 bg-gray-50 border-b border-gray-100 flex items-center justify-center relative overflow-hidden">
                             {project.image ? (
                                 <img
                                     src={project.image}
@@ -170,37 +193,58 @@ export default function Projects() {
                         </div>
 
                         {/* Project Content */}
-                        <div className="p-8 flex flex-col flex-1 pt-6">
+                        <div className="p-6 sm:p-8 flex flex-col flex-1 pt-4 sm:pt-6">
                             <h3 className="text-lg font-semibold text-black tracking-tight leading-tight mb-4">
                                 {project.title}
                             </h3>
 
+                            {project.summary && (
+                                <p className="text-sm text-gray-600 mb-4">{project.summary}</p>
+                            )}
+
                             {/* Technologies Tags */}
                             <div className="flex flex-wrap gap-2 mb-6">
-                                {project.technologies.map((tech) => (
+                                {displayedTech.map((tech) => (
                                     <span
                                         key={tech}
-                                        className="flex-grow text-center px-2.5 py-1 bg-gray-50 border border-gray-100 text-[11px] font-medium text-gray-700 rounded-md"
+                                        className="text-center px-2.5 py-1 bg-gray-50 border border-gray-100 text-[10px] sm:text-[11px] font-medium text-gray-700 rounded-md"
                                     >
                                         {tech}
                                     </span>
                                 ))}
+                                {hasMoreTech && (
+                                    <span className="text-center px-2.5 py-1 bg-gray-50 border border-gray-100 text-[11px] font-medium text-gray-700 rounded-md">
+                                        ...
+                                    </span>
+                                )}
                             </div>
 
 
                         </div>
                     </a>
-                ))}
+                    );
+                })}
             </div>
 
-            {/* View More Button */}
-            {visibleCount < projects.length && (
-                <div className="mt-16 flex justify-center">
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+                <div className="mt-16 flex items-center justify-center gap-4">
                     <button
-                        onClick={handleViewMore}
-                        className="px-8 py-3 bg-black text-white text-sm font-semibold rounded-xl hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md"
+                        onClick={handlePrev}
+                        disabled={page === 1}
+                        className="px-4 py-2 bg-white border border-gray-200 text-sm font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        View More Projects
+                        Prev
+                    </button>
+
+                    <div className="text-sm text-gray-600">Page {page} of {totalPages}</div>
+
+                    <button
+                        onClick={handleNext}
+                        disabled={page === totalPages}
+                        className="px-4 py-2 bg-black text-white text-sm font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Next
                     </button>
                 </div>
             )}

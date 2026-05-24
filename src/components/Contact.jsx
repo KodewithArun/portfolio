@@ -45,7 +45,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="max-w-7xl mx-auto px-6 py-28 border-t border-gray-100">
+        <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 py-28 border-t border-gray-100">
             {/* Section Header */}
             <div className="mb-20 max-w-3xl">
                 <span className="text-xs uppercase tracking-widest font-semibold text-gray-400 block mb-3 animate-fadeIn">
@@ -63,7 +63,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
                 {/* Contact Information */}
                 <div className="lg:col-span-5 space-y-8">
-                    <div className="bg-gray-50 border border-gray-100 rounded-3xl p-8 lg:p-10 space-y-8">
+                    <div className="bg-white/90 backdrop-blur-md border border-gray-100 rounded-3xl p-5 sm:p-6 lg:p-10 space-y-8 shadow-sm">
                         <div>
                             <h3 className="text-xl font-semibold text-black mb-6">Contact Details</h3>
                             <div className="space-y-6">
@@ -72,9 +72,9 @@ export default function Contact() {
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black shadow-sm flex-shrink-0">
                                         <FiMail className="text-xl" />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Email</p>
-                                        <a href="mailto:contactwitharunlaudari@gmail.com" className="text-base font-semibold text-black hover:text-gray-600 transition-colors">
+                                        <a href="mailto:contactwitharunlaudari@gmail.com" className="block text-sm sm:text-base font-semibold text-black hover:text-gray-600 transition-colors break-all leading-relaxed">
                                             contactwitharunlaudari@gmail.com
                                         </a>
                                     </div>
@@ -84,9 +84,9 @@ export default function Contact() {
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black shadow-sm flex-shrink-0">
                                         <FiMapPin className="text-xl" />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Location</p>
-                                        <p className="text-base font-semibold text-black">
+                                        <p className="text-sm sm:text-base font-semibold text-black leading-relaxed">
                                             Kathmandu, Nepal
                                         </p>
                                     </div>
@@ -98,7 +98,7 @@ export default function Contact() {
 
                         <div>
                             <h3 className="text-xl font-semibold text-black mb-6">Social Profiles</h3>
-                            <div className="flex gap-6">
+                            <div className="flex flex-wrap gap-4 sm:gap-6">
                                 <a href="https://github.com/KodewithArun" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors">
                                     <FaGithub className="text-2xl" />
                                 </a>
@@ -115,7 +115,7 @@ export default function Contact() {
 
                 {/* Contact Form */}
                 <div className="lg:col-span-7">
-                    <form ref={formRef} className="bg-white border border-gray-100 shadow-sm rounded-3xl p-8 lg:p-10" onSubmit={sendEmail}>
+                    <form ref={formRef} className="bg-white/90 backdrop-blur-md border border-gray-100 rounded-3xl p-5 sm:p-6 lg:p-10 shadow-sm" onSubmit={sendEmail}>
                         
                         {/* Status Messages */}
                         {submitStatus === 'success' && (

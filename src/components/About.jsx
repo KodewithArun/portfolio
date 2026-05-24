@@ -10,9 +10,9 @@ const sections = [
     {
         id: "about",
         title: "About me",
-        icon: <FiUser />,
+        icon: <FiUser />,   
         content: {
-            heading: "AI Engineer, ML & Data Specialist",
+            heading: "AI Engineer & Backend Specialist",
             description: `I design and build intelligent AI systems and high-performance backend infrastructures that turn complex requirements into secure, scalable, and production-ready applications.
 
 My core expertise spans Generative AI (GenAI) solutions, advanced Retrieval-Augmented Generation (RAG) pipelines, and Multi-Agent ecosystems. On the systems layer, I architect secure Restful APIs using Django Rest Framework (DRF) and optimize high-throughput database schemas designed for efficiency and horizontal scalability.

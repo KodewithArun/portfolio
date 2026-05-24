@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import arunprofile from "../assets/images/arunprofile.png";
+import Testimonial from "./Testimonial";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -138,12 +139,14 @@ export function Hero() {
           >
             Hire Me!
           </button>
-          <button
-            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-6 py-3 rounded-lg bg-black text-white font-medium w-full sm:w-auto hover:bg-gray-800 transition-colors"
+          <a
+            href="/Arun_Pandey_Laudari.pdf"
+            download
+            className="px-6 py-3 rounded-lg bg-black text-white font-medium w-full sm:w-auto hover:bg-gray-800 transition-colors text-center flex items-center justify-center border border-black"
+            style={{ textDecoration: "none" }}
           >
             See My Portfolio
-          </button>
+          </a>
         </div>
       </div>
 
@@ -161,56 +164,11 @@ export function Hero() {
   );
 }
 
-export function StatsHero() {
-  const stats = [
-    { end: 98, suffix: "%", label: "Trust us for their next project" },
-    { end: 5, suffix: "+", label: "Building quality products" },
-    { end: 2, suffix: "+", label: "2 years impactful experience" },
-    { end: 3, suffix: "+", label: "Satisfied clients worldwide" },
-  ];
-
-  const [counts, setCounts] = useState(stats.map(() => 0));
-
-  useEffect(() => {
-    const duration = 1600;
-    const start = performance.now();
-
-    const animate = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-
-      setCounts(
-        stats.map(({ end }) => Math.floor(end * (1 - Math.pow(1 - progress, 3))))
-      );
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    const frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
-  return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 text-center">
-      {stats.map((stat, index) => (
-        <div key={stat.label}>
-          <h2 className="text-3xl sm:text-4xl font-bold">
-            {counts[index]}
-            {stat.suffix}
-          </h2>
-          <p className="text-gray-500 mt-2 text-sm">{stat.label}</p>
-        </div>
-      ))}
-    </section>
-  );
-}
-
 export default function Landing() {
   return (
     <div id="home">
       <Hero />
-      <StatsHero />
+      <Testimonial />
     </div>
   );
 }
