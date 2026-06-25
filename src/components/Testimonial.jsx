@@ -14,14 +14,6 @@ const testimonials = [
   },
   {
     id: 't2',
-    name: 'Technest Innovation',
-    role: 'AI Backend Engineer',
-    category: 'Company',
-    rating: 5,
-    quote: "Arun is a skilled backend engineer with strong expertise in Django, Django REST Framework, and PostgreSQL. His ability to design scalable APIs and integrate LLM solutions into production systems made a real impact on our engineering team.",
-  },
-  {
-    id: 't3',
     name: 'Inspiring Lab',
     role: 'AI/ML Intern',
     category: 'Company',
