@@ -18,7 +18,7 @@ const testimonials = [
     role: 'AI/ML Intern',
     category: 'Company',
     rating: 5,
-    quote: "Arun worked on backend services with FastAPI and PostgreSQL, built AI agent workflows using LangGraph and Google ADK, and integrated ecommerce APIs all with a professional and dedicated approach.",
+    quote: "During his internship at InsireLAB, Arun worked on backend services with FastAPI and PostgreSQL, built AI agent workflows using LangGraph and Google ADK, and integrated ecommerce APIs — all with a professional and dedicated approach."
   }
 ];
 
