@@ -4,7 +4,9 @@ import Landing, { Navbar } from "./components/Landing";
 import AboutMeSection from "./components/About";
 import Services from "./components/Services";
 import Experiences from "./components/Experiences";
+import Testimonial from "./components/Testimonial";
 import Projects from "./components/Projects";
+import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 
 function App() {
@@ -21,7 +23,9 @@ function App() {
       <AboutMeSection />
       <Services />
       <Experiences />
+      <Testimonial />
       <Projects />
+      <Blog />
       <Contact />
 
     </motion.div>

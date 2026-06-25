@@ -65,28 +65,28 @@ export default function Contact() {
                 <div className="lg:col-span-5 space-y-8">
                     <div className="bg-white/90 backdrop-blur-md border border-gray-100 rounded-3xl p-5 sm:p-6 lg:p-10 space-y-8 shadow-sm">
                         <div>
-                            <h3 className="text-xl font-semibold text-black mb-6">Contact Details</h3>
+                            <h3 className="text-xl font-semibold text-blue-950 mb-6">Contact Details</h3>
                             <div className="space-y-6">
                                 {/* Email */}
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black shadow-sm flex-shrink-0">
+                                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-blue-950 shadow-sm flex-shrink-0">
                                         <FiMail className="text-xl" />
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Email</p>
-                                        <a href="mailto:contactwitharunlaudari@gmail.com" className="block text-sm sm:text-base font-semibold text-black hover:text-gray-600 transition-colors break-all leading-relaxed">
+                                        <a href="mailto:contactwitharunlaudari@gmail.com" className="block text-sm sm:text-base font-semibold text-blue-950 hover:text-gray-600 transition-colors break-all leading-relaxed">
                                             contactwitharunlaudari@gmail.com
                                         </a>
                                     </div>
                                 </div>
                                 {/* Location */}
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black shadow-sm flex-shrink-0">
+                                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-blue-950 shadow-sm flex-shrink-0">
                                         <FiMapPin className="text-xl" />
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Location</p>
-                                        <p className="text-sm sm:text-base font-semibold text-black leading-relaxed">
+                                        <p className="text-sm sm:text-base font-semibold text-blue-950 leading-relaxed">
                                             Kathmandu, Nepal
                                         </p>
                                     </div>
@@ -97,9 +97,9 @@ export default function Contact() {
                         <hr className="border-gray-200" />
 
                         <div>
-                            <h3 className="text-xl font-semibold text-black mb-6">Social Profiles</h3>
+                            <h3 className="text-xl font-semibold text-blue-950 mb-6">Social Profiles</h3>
                             <div className="flex flex-wrap gap-4 sm:gap-6">
-                                <a href="https://github.com/KodewithArun" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors">
+                                <a href="https://github.com/KodewithArun" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-950 transition-colors">
                                     <FaGithub className="text-2xl" />
                                 </a>
                                 <a href="https://www.linkedin.com/in/arun-pandey-laudari-214a9832a" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#0A66C2] transition-colors">
@@ -142,7 +142,7 @@ export default function Contact() {
                                     id="name"
                                     name="user_name"
                                     placeholder="John Doe"
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-950 focus:border-transparent transition-all"
                                     required
                                 />
                             </div>
@@ -155,7 +155,7 @@ export default function Contact() {
                                     id="email"
                                     name="user_email"
                                     placeholder="john@example.com"
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-950 focus:border-transparent transition-all"
                                     required
                                 />
                             </div>
@@ -170,7 +170,7 @@ export default function Contact() {
                                 id="subject"
                                 name="subject"
                                 placeholder="How can I help you?"
-                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-950 focus:border-transparent transition-all"
                                 required
                             />
                         </div>
@@ -184,7 +184,7 @@ export default function Contact() {
                                 name="message"
                                 rows="5"
                                 placeholder="Tell me about your project..."
-                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all resize-none"
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-950 focus:border-transparent transition-all resize-none"
                                 required
                             ></textarea>
                         </div>
@@ -193,7 +193,7 @@ export default function Contact() {
                             type="submit"
                             disabled={isSubmitting}
                             className={`w-full sm:w-auto flex items-center justify-center gap-2 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-colors shadow-sm ${
-                                isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-black hover:bg-gray-800"
+                                isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-blue-950 hover:bg-blue-900"
                             }`}
                         >
                             {isSubmitting ? (

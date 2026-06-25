@@ -12,10 +12,10 @@ const sections = [
         title: "About me",
         icon: <FiUser />,   
         content: {
-            heading: "AI Engineer & Backend Specialist",
+            heading: "AI Engineer & Backend Developer",
             description: `I design and build intelligent AI systems and high-performance backend infrastructures that turn complex requirements into secure, scalable, and production-ready applications.
 
-My core expertise spans Generative AI (GenAI) solutions, advanced Retrieval-Augmented Generation (RAG) pipelines, and Multi-Agent ecosystems. On the systems layer, I architect secure Restful APIs using Django Rest Framework (DRF) and optimize high-throughput database schemas designed for efficiency and horizontal scalability.
+My core expertise spans Generative AI (GenAI) solutions, advanced Retrieval-Augmented Generation (RAG) pipelines, Multi-Agent ecosystems, and MCP (Model Context Protocol) servers. On the systems layer, I architect secure Restful APIs using Django Rest Framework (DRF) and optimize high-throughput database schemas designed for efficiency and horizontal scalability.
 
 Driven by data analysis and machine learning best practices, I focus on delivering low-latency, resilient, and enterprise-grade software built for real-world impact.`,
         },
@@ -70,7 +70,7 @@ Driven by data analysis and machine learning best practices, I focus on deliveri
                 {
                     title: "Machine Learning, Deep Learning, and RAG Frameworks Course",
                     year: "2025",
-                    description: "Conducted by Abinash Pant (AI/ML Engineer); focused on building intelligent agents with LangGraph, Agno, and Retrieval-Augmented Generation (RAG) architectures."
+                    description: "Focused on building intelligent agents with LangGraph, Agno, and Retrieval-Augmented Generation (RAG) architectures."
                 },
                 {
                     title: "Complete Data Science, Machine Learning, Deep Learning, and NLP Bootcamp",
@@ -101,13 +101,13 @@ export default function AboutMeSection() {
             case "about":
                 return (
                     <div className="space-y-6">
-                        <div className="flex items-center gap-3 text-2xl text-black">
+                        <div className="flex items-center gap-3 text-2xl text-blue-950">
                             {active.icon}
                             <span className="text-xs uppercase tracking-widest font-semibold text-gray-400">Profile</span>
                         </div>
 
                         <div>
-                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-black mb-6">
+                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-blue-950 mb-6">
                                 {active.content.heading}
                             </h2>
 
@@ -119,16 +119,16 @@ export default function AboutMeSection() {
                             <div className="mt-8 border-t border-gray-100 pt-6 animate-slideUp">
                                 <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3.5">Core Focus Areas</h3>
                                 <div className="flex flex-wrap gap-2">
-                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-black hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
+                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
                                         Machine Learning & Data Analysis
                                     </span>
-                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-black hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
+                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
                                         GenAI & RAG Systems
                                     </span>
-                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-black hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
+                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
                                         Multi-Agent Ecosystems
                                     </span>
-                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-black hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
+                                    <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
                                         Restful APIs & DRF
                                     </span>
                                 </div>
@@ -140,13 +140,13 @@ export default function AboutMeSection() {
             case "education":
                 return (
                     <div className="space-y-6">
-                        <div className="flex items-center gap-3 text-2xl text-black">
+                        <div className="flex items-center gap-3 text-2xl text-blue-950">
                             {active.icon}
                             <span className="text-xs uppercase tracking-widest font-semibold text-gray-400">Academic History</span>
                         </div>
 
                         <div>
-                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-black mb-4">
+                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-blue-950 mb-4">
                                 {active.content.heading}
                             </h2>
 
@@ -154,18 +154,18 @@ export default function AboutMeSection() {
                                 {active.content.description}
                             </p>
 
-                            <div className="relative pl-6 border-l border-gray-250 space-y-10 py-2">
+                            <div className="relative pl-5 sm:pl-6 border-l border-gray-250 space-y-8 sm:space-y-10 py-2">
                                 {active.content.items.map((item, index) => (
                                     <div key={index} className="relative group">
                                         {/* Circle Timeline indicator */}
-                                        <div className="absolute -left-[32px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-gray-300 group-hover:border-black transition duration-300 flex items-center justify-center">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-black transition duration-300" />
+                                        <div className="absolute -left-[22px] sm:-left-[32px] top-1.5 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-white border-2 border-gray-300 group-hover:border-blue-950 transition duration-300 flex items-center justify-center">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-blue-950 transition duration-300" />
                                         </div>
 
                                         {/* Timeline content card */}
                                         <div className="transition duration-300">
                                             <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{item.duration}</span>
-                                            <h3 className="text-xl font-bold text-black mt-1 group-hover:text-black transition-colors duration-300">{item.degree}</h3>
+                                            <h3 className="text-lg sm:text-xl font-bold text-blue-950 mt-1 group-hover:text-blue-950 transition-colors duration-300">{item.degree}</h3>
                                             <p className="text-sm font-semibold text-gray-500 mt-1">{item.institution}</p>
                                             <p className="text-gray-650 text-sm sm:text-base mt-3 leading-relaxed">{item.description}</p>
                                         </div>
@@ -179,13 +179,13 @@ export default function AboutMeSection() {
             case "awards":
                 return (
                     <div className="space-y-6">
-                        <div className="flex items-center gap-3 text-2xl text-black">
+                        <div className="flex items-center gap-3 text-2xl text-blue-950">
                             {active.icon}
                             <span className="text-xs uppercase tracking-widest font-semibold text-gray-400">Achievements</span>
                         </div>
 
                         <div>
-                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-black mb-4">
+                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-blue-950 mb-4">
                                 {active.content.heading}
                             </h2>
 
@@ -197,13 +197,13 @@ export default function AboutMeSection() {
                                 {active.content.awards.map((award, index) => (
                                     <div
                                         key={index}
-                                        className="border-b border-gray-100 pb-6 hover:border-black transition-colors duration-300 group cursor-default"
+                                        className="border-b border-gray-100 pb-6 hover:border-blue-950 transition-colors duration-300 group cursor-default"
                                     >
-                                        <div className="flex items-start justify-between gap-4">
-                                            <div className="flex items-start gap-4">
-                                                <FiArrowRight className="mt-1 text-gray-400 group-hover:text-black group-hover:translate-x-1 transition-all duration-300 text-base flex-shrink-0" />
-                                                <div>
-                                                    <h3 className="text-lg font-semibold text-gray-800 group-hover:text-black transition-colors duration-300">
+                                    <div className="flex items-start justify-between gap-3 sm:gap-4">
+                                        <div className="flex items-start gap-3 sm:gap-4">
+                                            <FiArrowRight className="mt-1 text-gray-400 group-hover:text-blue-950 group-hover:translate-x-1 transition-all duration-300 text-sm sm:text-base flex-shrink-0" />
+                                            <div>
+                                                <h3 className="text-base sm:text-lg font-semibold text-gray-800 group-hover:text-blue-950 transition-colors duration-300">
                                                         {award.title}
                                                     </h3>
                                                     {award.description && (
@@ -213,7 +213,7 @@ export default function AboutMeSection() {
                                                     )}
                                                 </div>
                                             </div>
-                                            <span className="text-gray-400 text-sm sm:text-base font-semibold group-hover:text-black transition-colors duration-300 whitespace-nowrap">
+                                            <span className="text-gray-400 text-xs sm:text-sm font-semibold group-hover:text-blue-950 transition-colors duration-300 whitespace-nowrap">
                                                 {award.year}
                                             </span>
                                         </div>
@@ -230,7 +230,7 @@ export default function AboutMeSection() {
     }, [active]);
 
     return (
-        <section id="about" className="w-full py-24 bg-white border-t border-b border-gray-100 overflow-hidden animate-fadeIn">
+        <section id="about" className="w-full py-16 sm:py-24 bg-white border-t border-b border-gray-100 overflow-hidden animate-fadeIn">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 {/* TABBED CONTENT */}
                 <div className="flex flex-col min-h-[500px]">
@@ -243,8 +243,8 @@ export default function AboutMeSection() {
                                     key={item.id}
                                     onClick={() => setActive(item)}
                                     className={`relative pb-4 text-left transition-all duration-300 focus:outline-none whitespace-nowrap px-2 font-semibold cursor-pointer ${isActive
-                                        ? "text-black text-lg font-bold"
-                                        : "text-gray-400 hover:text-gray-600 text-base"
+                                        ? "text-blue-950 text-base sm:text-lg font-bold"
+                                        : "text-gray-400 hover:text-gray-600 text-sm sm:text-base"
                                         }`}
                                 >
                                     <div className="flex items-center gap-2">
@@ -253,7 +253,7 @@ export default function AboutMeSection() {
                                     </div>
 
                                     {isActive && (
-                                        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-black rounded-full" />
+                                        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-950 rounded-full" />
                                     )}
                                 </button>
                             );

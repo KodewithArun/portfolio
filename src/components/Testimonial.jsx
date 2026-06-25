@@ -1,85 +1,136 @@
-import { FiCheckCircle } from "react-icons/fi";
+import { useState } from "react";
+import { FiStar } from "react-icons/fi";
+import clientBala from "../assets/images/clientbalajoshi.png";
 
 const testimonials = [
   {
     id: 't1',
     name: 'Bala Joshi',
+    image: clientBala,
     role: 'Namuna Bakery, Rijal Chowk, Bharatpur',
+    category: 'Client',
     rating: 5,
-    quote: "Arun helped us by building   a full stack e-commerce platform so we could sell our delicious baked goods online. The system is fast, secure, and easy to use. Highly recommended!"
+    quote: "Arun helped us by building a full stack e-commerce platform so we could sell our delicious baked goods online. The system is fast, secure, and easy to use. Highly recommended!"
   },
   {
     id: 't2',
-    name: 'Samuel Green',
-    role: 'Product Manager, BrightApp',
+    name: 'Technest Innovation',
+    role: 'AI Backend Engineer',
+    category: 'Company',
     rating: 5,
-    quote: "Delivered a production-ready microservice architecture on time; very impressed.",
+    quote: "Arun is a skilled backend engineer with strong expertise in Django, Django REST Framework, and PostgreSQL. His ability to design scalable APIs and integrate LLM solutions into production systems made a real impact on our engineering team.",
   },
   {
     id: 't3',
-    name: 'Priya Sharma',
-    role: 'Founder, MedAssist',
+    name: 'Inspiring Lab',
+    role: 'AI/ML Intern',
+    category: 'Company',
     rating: 5,
-    quote: "Built a thoughtful AI assistant that significantly improved our workflow.",
+    quote: "Arun worked on backend services with FastAPI and PostgreSQL, built AI agent workflows using LangGraph and Google ADK, and integrated ecommerce APIs all with a professional and dedicated approach.",
   }
 ];
 
-function InitialsAvatar({ name }) {
-  const initials = name
-    .split(' ')
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase();
-
-  return (
-    <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-sm font-semibold text-gray-700">
-      {initials}
-    </div>
-  );
-}
-
 export default function Testimonial() {
+  const pageSize = 3;
+  const [page, setPage] = useState(1);
+  const totalPages = Math.max(1, Math.ceil(testimonials.length / pageSize));
+  const visible = testimonials.slice(0, page * pageSize);
+
   return (
-    <section id="testimonials" className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
-      <div className="mb-12 max-w-3xl">
-        <span className="text-xs uppercase tracking-widest font-semibold text-gray-400 block mb-3">
-          What Clients Say
-        </span>
-        <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
-          Testimonials
-        </h2>
-      </div>
+    <section id="testimonials" className="py-20 sm:py-28 bg-gray-50/40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="mb-14 max-w-2xl">
+          <span className="text-xs uppercase tracking-widest font-semibold text-blue-950/60 block mb-3">
+            Testimonials
+          </span>
+          <h2 className="text-3xl md:text-4xl font-semibold leading-tight text-blue-950 mb-4">
+            Kind words from clients, mentors, and collaborators
+          </h2>
+          <p className="text-blue-950/70 text-sm sm:text-base max-w-xl">
+            Real feedback from people I've worked with across companies, projects, and collaborations.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {testimonials.map((t) => (
-          <div key={t.id} className="bg-white/90 backdrop-blur-md border border-gray-100 rounded-3xl p-6 shadow-sm flex flex-col gap-4">
-            <div className="flex items-center gap-4">
-              <InitialsAvatar name={t.name} />
-              <div>
-                <div className="flex items-center gap-2 text-sm font-semibold text-black">
-                  <span>{t.name}</span>
-                  <FiCheckCircle className="text-green-500 text-sm" aria-label="Verified Client" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visible.map((t) => (
+            <div
+              key={t.id}
+              className="flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm"
+            >
+              <div className="flex items-start gap-4 p-6 pb-4">
+                {t.image && (
+                  <div className="w-11 h-11 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden shrink-0">
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <p className="text-sm font-semibold text-gray-900">{t.name}</p>
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-950 bg-blue-50 px-2 py-0.5 rounded-full">
+                      {t.category}
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-400 truncate mt-0.5">{t.role}</p>
+                  <div className="flex items-center gap-0.5 mt-1.5">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <FiStar
+                        key={i}
+                        size={12}
+                        className={i < t.rating ? "text-amber-400 fill-amber-400" : "text-gray-200"}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="text-xs text-gray-500">{t.role}</div>
+              </div>
+
+              <div className="px-6 pb-6">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
               </div>
             </div>
+          ))}
+        </div>
 
-            <p className="text-gray-700 text-sm">“{t.quote}”</p>
+        {totalPages > 1 && (
+          <div className="mt-12 flex items-center justify-center gap-3">
+            <button
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={page === 1}
+              className="px-4 py-2 text-sm font-medium text-blue-950 bg-white border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-950 transition-colors"
+            >
+              Previous
+            </button>
 
-            <div className="mt-auto flex items-center justify-between gap-3 text-sm">
-              <div className="flex items-center gap-1 text-amber-400" aria-label={`${t.rating} out of 5 stars`}>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <span key={index} className={index < t.rating ? 'text-amber-400' : 'text-gray-200'}>
-                    ★
-                  </span>
-                ))}
-              </div>
-              <span className="text-gray-400">{t.rating}.0 / 5.0</span>
+            <div className="flex items-center gap-1.5">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i + 1)}
+                  className={`w-8 h-8 text-sm font-medium rounded-lg transition-colors ${
+                    page === i + 1
+                      ? "bg-blue-950 text-white"
+                      : "bg-white text-blue-950/60 border border-gray-200 hover:border-blue-950/30"
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
             </div>
 
+            <button
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={page === totalPages}
+              className="px-4 py-2 text-sm font-medium text-blue-950 bg-white border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-950 transition-colors"
+            >
+              Next
+            </button>
           </div>
-        ))}
+        )}
       </div>
     </section>
   );
