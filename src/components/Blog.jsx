@@ -3,10 +3,12 @@ import { FiCalendar, FiExternalLink } from "react-icons/fi";
 import blogImg1 from "../assets/images/blog1.png";
 import blogImg2 from "../assets/images/blog2.png";
 import blogImg3 from "../assets/images/blog3.png";
+import blogImg4 from "../assets/images/blog4.png";
 
 const posts = [
   {
     id: "b1",
+    priority: 1,
     image: blogImg1,
     title: "Hackathon Winner — Led Team ByteForce to 1st Place",
     excerpt: "Led team ByteForce from Lumbini ICT College to victory at the 36-hour Hackathon Beta hosted by United Technical College, Bharatpur. Competing against 10 teams from Chitwan, Rupandehi, and Kaski, we secured 1st place and NPR 30,000. The hackathon focused on social, economic, and technological innovation, with participants provided accommodation and meals throughout.",
@@ -16,7 +18,19 @@ const posts = [
     link: "https://www.chitwanpost.com.np/20241208-12739",
   },
   {
+    id: "b4",
+    priority: 2,
+    image: blogImg4,
+    title: "MCP: The USB-C for AI — Why Models Needed a Standard Bridge to Real-World Context",
+    excerpt: "LLMs solved intelligence. MCP solves access. A deep dive into why Model Context Protocol exists — from the copy-paste hell era to Anthropic's open standard that gives AI models standardized, secure access to real-world tools and data.",
+    date: "Jun 28, 2026",
+    category: "AI / MCP",
+    source: "Medium",
+    link: "https://medium.com/@contactwitharunlaudari/mcp-the-usb-c-for-ai-why-models-needed-a-standard-bridge-to-real-world-context-831638a5d877",
+  },
+  {
     id: "b2",
+    priority: 3,
     image: blogImg2,
     title: "Beginner's Guide to Data Analysis: The Foundation of AI and ML",
     excerpt: "A comprehensive beginner's guide covering data types, the data analysis process, key concepts, and a roadmap to start learning — based on my hands-on experience with Pandas, NumPy, and real Kaggle datasets.",
@@ -27,6 +41,7 @@ const posts = [
   },
   {
     id: "b3",
+    priority: 4,
     image: blogImg3,
     title: "The Ultimate Beginner's Guide to Machine Learning: From Pipeline to Advanced Concepts",
     excerpt: "A comprehensive theoretical guide covering the ML pipeline, types of learning, regression vs classification, popular models, overfitting/underfitting, cross-validation, and evaluation metrics — all explained with real-world use cases.",
@@ -35,7 +50,7 @@ const posts = [
     source: "Medium",
     link: "https://medium.com/@contactwitharunlaudari/the-ultimate-beginners-guide-to-machine-learning-from-pipeline-to-advanced-concepts-52bfb0ce175b",
   }
-];
+].sort((a, b) => a.priority - b.priority);
 
 export default function Blog() {
   const pageSize = 2;
