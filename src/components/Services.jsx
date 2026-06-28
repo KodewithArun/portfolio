@@ -2,7 +2,7 @@ import { FiServer, FiDatabase, FiLayers, FiZap } from "react-icons/fi";
 
 export default function Services() {
   return (
-    <section id="services" className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-18">
+    <section id="services" className="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
       <div className="mb-14">
         <span className="text-xs uppercase tracking-widest font-semibold text-blue-950/60 block mb-3">
           What I Do

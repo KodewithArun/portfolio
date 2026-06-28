@@ -111,7 +111,7 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+        <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
             <div className="mb-14 max-w-2xl">
                 <span className="text-xs uppercase tracking-widest font-semibold text-blue-950/60 block mb-3">
                     Portfolio

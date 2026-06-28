@@ -45,7 +45,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 py-28 border-t border-gray-100">
+        <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 border-t border-gray-100">
             {/* Section Header */}
             <div className="mb-20 max-w-3xl">
                 <span className="text-xs uppercase tracking-widest font-semibold text-gray-400 block mb-3 animate-fadeIn">

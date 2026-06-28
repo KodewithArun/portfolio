@@ -49,7 +49,7 @@ const experiences = [
 
 export default function Experiences() {
     return (
-        <section id="experiences" className="max-w-7xl mx-auto px-6 py-24 border-t border-gray-100">
+        <section id="experiences" className="max-w-7xl mx-auto px-6 py-14 sm:py-20 border-t border-gray-100">
             {/* Section Header */}
             <div className="mb-20 max-w-3xl">
                 <span className="text-xs uppercase tracking-widest font-semibold text-blue-950/60 block mb-3 animate-fadeIn">

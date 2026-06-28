@@ -230,7 +230,7 @@ export default function AboutMeSection() {
     }, [active]);
 
     return (
-        <section id="about" className="w-full py-16 sm:py-24 bg-white border-t border-b border-gray-100 overflow-hidden animate-fadeIn">
+        <section id="about" className="w-full py-14 sm:py-20 bg-white border-t border-b border-gray-100 overflow-hidden animate-fadeIn">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 {/* TABBED CONTENT */}
                 <div className="flex flex-col min-h-[500px]">

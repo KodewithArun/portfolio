@@ -31,7 +31,7 @@ export default function Testimonial() {
   const visible = testimonials.slice(0, page * pageSize);
 
   return (
-    <section id="testimonials" className="py-20 sm:py-28 bg-gray-50/40">
+    <section id="testimonials" className="py-14 sm:py-20 bg-gray-50/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-14 max-w-2xl">
           <span className="text-xs uppercase tracking-widest font-semibold text-blue-950/60 block mb-3">
