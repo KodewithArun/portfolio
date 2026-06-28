@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { FiGithub, FiCode } from "react-icons/fi";
 import ruralHealthAIImg from "../assets/images/ruralhealthai.png";
 import agenticRagImg from "../assets/images/agenticragusinglanggraph.png";
@@ -9,10 +9,13 @@ import churnImg from "../assets/images/customerchurnusingann.jpeg";
 import segKnnImg from "../assets/images/customersegmanation singknn.png";
 import diabetesImg from "../assets/images/dibatiesuisnglogistic.png";
 
+const projectCategories = ["All", "AI Agents & RAG Pipelines", "Machine Learning & Data Science"];
+
 const projects = [
     {
         id: "rural-health-ai",
         order: 1,
+        category: "AI Agents & RAG Pipelines",
         title: "Rural Health AI — Smart Healthcare Solutions",
         summary: "AI-driven platform improving rural healthcare access, triage, and scheduling.",
         image: ruralHealthAIImg,
@@ -22,6 +25,7 @@ const projects = [
     {
         id: "agentic-rag",
         order: 2,
+        category: "AI Agents & RAG Pipelines",
         title: "Agentic RAG Using LangGraph",
         summary: "Adaptive RAG pipeline using LangGraph agents for context-aware retrieval.",
         image: agenticRagImg,
@@ -31,6 +35,7 @@ const projects = [
     {
         id: "sql-sage",
         order: 6,
+        category: "AI Agents & RAG Pipelines",
         title: "SQL Sage — Intelligent DB Agent",
         summary: "Natural-language to SQL assistant that generates optimized, validated queries.",
         image: sqlsAgentImg,
@@ -40,6 +45,7 @@ const projects = [
     {
         id: "multi-doc-chatbot",
         order: 7,
+        category: "AI Agents & RAG Pipelines",
         title: "Multi-Document Chatbot",
         summary: "Chatbot that answers queries across PDFs, DOCX, PPTX, XLSX, Markdown and more.",
         image: multidocImg,
@@ -49,6 +55,7 @@ const projects = [
     {
         id: "churn-prediction",
         order: 5,
+        category: "Machine Learning & Data Science",
         title: "Customer Churn Prediction",
         summary: "ANN-based churn prediction with preprocessing and a Streamlit dashboard.",
         image: churnImg,
@@ -58,6 +65,7 @@ const projects = [
     {
         id: "movie-rec",
         order: 4,
+        category: "Machine Learning & Data Science",
         title: "Movie Recommendation System",
         summary: "Content-based recommender using TF-IDF and TMDB metadata for posters.",
         image: movierecImg,
@@ -67,6 +75,7 @@ const projects = [
     {
         id: "customer-seg",
         order: 3,
+        category: "Machine Learning & Data Science",
         title: "Customer Segmentation",
         summary: "K-Means clustering pipeline for customer segmentation and visualization.",
         image: segKnnImg,
@@ -76,6 +85,7 @@ const projects = [
     {
         id: "diabetes-pred",
         order: 8,
+        category: "Machine Learning & Data Science",
         title: "Diabetes Risk Prediction",
         summary: "Logistic regression model for diabetes risk prediction, served via Flask.",
         image: diabetesImg,
@@ -85,13 +95,20 @@ const projects = [
 ];
 
 export default function Projects() {
-    const pageSize = 4;
+    const [activeCategory, setActiveCategory] = useState("All");
     const [page, setPage] = useState(1);
-    const totalPages = Math.max(1, Math.ceil(projects.length / pageSize));
+    const pageSize = 4;
 
     const sorted = [...projects].sort((a, b) => a.order - b.order);
+    const filtered = activeCategory === "All" ? sorted : sorted.filter(p => p.category === activeCategory);
+    const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
     const startIndex = (page - 1) * pageSize;
-    const visibleProjects = sorted.slice(startIndex, startIndex + pageSize);
+    const visibleProjects = filtered.slice(startIndex, startIndex + pageSize);
+
+    const handleCategoryChange = (cat) => {
+        setActiveCategory(cat);
+        setPage(1);
+    };
 
     return (
         <section id="projects" className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
@@ -105,6 +122,22 @@ export default function Projects() {
                 <p className="text-blue-950/70 text-sm sm:text-base">
                     A selection of systems I've built — from AI agents and RAG pipelines to ML models and backend services.
                 </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 mb-10">
+                {projectCategories.map((cat) => (
+                    <button
+                        key={cat}
+                        onClick={() => handleCategoryChange(cat)}
+                        className={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full transition-colors ${
+                            activeCategory === cat
+                                ? "bg-blue-950 text-white"
+                                : "bg-blue-50 text-blue-950 hover:bg-blue-100"
+                        }`}
+                    >
+                        {cat}
+                    </button>
+                ))}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -137,6 +170,9 @@ export default function Projects() {
                             </a>
 
                             <div className="p-5 sm:p-6 flex flex-col flex-1">
+                                <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-950 bg-blue-50 px-2 py-1 rounded-full self-start mb-3">
+                                    {project.category}
+                                </span>
                                 <h3 className="text-base sm:text-lg font-semibold text-blue-950 mb-2">
                                     {project.title}
                                 </h3>
@@ -165,6 +201,10 @@ export default function Projects() {
                     );
                 })}
             </div>
+
+            {filtered.length === 0 && (
+                <p className="text-center text-blue-950/50 mt-12">No projects in this category yet.</p>
+            )}
 
             {totalPages > 1 && (
                 <div className="mt-12 flex items-center justify-center gap-3">

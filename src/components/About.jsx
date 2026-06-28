@@ -120,16 +120,16 @@ export default function AboutMeSection() {
                                 <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3.5">Core Focus Areas</h3>
                                 <div className="flex flex-wrap gap-2">
                                     <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
-                                        Machine Learning & Data Analysis
+                                        Machine Learning & Data Science
                                     </span>
                                     <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
-                                        GenAI & RAG Systems
+                                        Generative AI & RAG Pipelines
                                     </span>
                                     <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
-                                        Multi-Agent Ecosystems
+                                        Multi-Agent AI Orchestration
                                     </span>
                                     <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
-                                        Restful APIs & DRF
+                                        Scalable Backend APIs & DRF
                                     </span>
                                 </div>
                             </div>

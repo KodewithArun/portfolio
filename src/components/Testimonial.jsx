@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiStar } from "react-icons/fi";
 import clientBala from "../assets/images/clientbalajoshi.png";
+import inspiringlabLogo from "../assets/images/InspiringLab.png";
 
 const testimonials = [
   {
@@ -15,6 +16,7 @@ const testimonials = [
   {
     id: 't2',
     name: 'Inspiring Lab',
+    image: inspiringlabLogo,
     role: 'AI/ML Intern',
     category: 'Company',
     rating: 5,
@@ -51,11 +53,11 @@ export default function Testimonial() {
             >
               <div className="flex items-start gap-4 p-6 pb-4">
                 {t.image && (
-                  <div className="w-11 h-11 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden shrink-0">
+                  <div className={`w-11 h-11 ${t.category === 'Company' ? 'rounded-full' : 'rounded-full'} bg-black flex items-center justify-center overflow-hidden shrink-0 ${t.category === 'Company' ? 'p-1.5 border border-gray-200' : ''}`}>
                     <img
                       src={t.image}
                       alt={t.name}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full ${t.category === 'Company' ? 'object-contain' : 'object-cover'}`}
                     />
                   </div>
                 )}

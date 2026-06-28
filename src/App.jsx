@@ -23,9 +23,9 @@ function App() {
       <AboutMeSection />
       <Services />
       <Experiences />
-      <Testimonial />
       <Projects />
       <Blog />
+      <Testimonial />
       <Contact />
 
     </motion.div>

@@ -5,6 +5,8 @@ import blogImg2 from "../assets/images/blog2.png";
 import blogImg3 from "../assets/images/blog3.png";
 import blogImg4 from "../assets/images/blog4.png";
 
+const categories = ["All", "Achievement", "Data Analysis", "Machine Learning", "Model Context Protocol"];
+
 const posts = [
   {
     id: "b1",
@@ -35,7 +37,7 @@ const posts = [
     title: "Beginner's Guide to Data Analysis: The Foundation of AI and ML",
     excerpt: "A comprehensive beginner's guide covering data types, the data analysis process, key concepts, and a roadmap to start learning — based on my hands-on experience with Pandas, NumPy, and real Kaggle datasets.",
     date: "Jan 3, 2026",
-    category: "Data Analysis Fundamentals",
+    category: "Data Analysis",
     source: "Medium",
     link: "https://medium.com/@contactwitharunlaudari/beginners-guide-to-data-analysis-the-foundation-of-ai-and-machine-learning-c49c440b4565",
   },
@@ -46,17 +48,15 @@ const posts = [
     title: "The Ultimate Beginner's Guide to Machine Learning: From Pipeline to Advanced Concepts",
     excerpt: "A comprehensive theoretical guide covering the ML pipeline, types of learning, regression vs classification, popular models, overfitting/underfitting, cross-validation, and evaluation metrics — all explained with real-world use cases.",
     date: "Jan 3, 2026",
-    category: "Machine Learning Guide",
+    category: "Machine Learning",
     source: "Medium",
     link: "https://medium.com/@contactwitharunlaudari/the-ultimate-beginners-guide-to-machine-learning-from-pipeline-to-advanced-concepts-52bfb0ce175b",
   }
 ].sort((a, b) => a.priority - b.priority);
 
 export default function Blog() {
-  const pageSize = 2;
-  const [page, setPage] = useState(1);
-  const totalPages = Math.max(1, Math.ceil(posts.length / pageSize));
-  const visiblePosts = posts.slice(0, page * pageSize);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const filteredPosts = activeCategory === "All" ? posts : posts.filter(p => p.category === activeCategory);
 
   return (
     <section id="blog" className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28 border-t border-gray-100">
@@ -72,8 +72,24 @@ export default function Blog() {
         </p>
       </div>
 
+      <div className="flex flex-wrap items-center gap-2 mb-10">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full transition-colors ${
+              activeCategory === cat
+                ? "bg-blue-950 text-white"
+                : "bg-blue-50 text-blue-950 hover:bg-blue-100"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-        {visiblePosts.map((post) => (
+        {filteredPosts.map((post) => (
           <a
             key={post.id}
             href={post.link}
@@ -117,40 +133,8 @@ export default function Blog() {
         ))}
       </div>
 
-      {totalPages > 1 && (
-        <div className="mt-12 flex items-center justify-center gap-3">
-          <button
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-            disabled={page === 1}
-            className="px-4 py-2 text-sm font-medium text-blue-950 bg-white border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-950 transition-colors"
-          >
-            Previous
-          </button>
-
-          <div className="flex items-center gap-1.5">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setPage(i + 1)}
-                className={`w-8 h-8 text-sm font-medium rounded-lg transition-colors ${
-                  page === i + 1
-                    ? "bg-blue-950 text-white"
-                    : "bg-white text-blue-950/60 border border-gray-200 hover:border-blue-950/30"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-            disabled={page === totalPages}
-            className="px-4 py-2 text-sm font-medium text-blue-950 bg-white border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-950 transition-colors"
-          >
-            Next
-          </button>
-        </div>
+      {filteredPosts.length === 0 && (
+        <p className="text-center text-blue-950/50 mt-12">No posts in this category yet.</p>
       )}
     </section>
   );
