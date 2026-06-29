@@ -4,6 +4,7 @@ import blogImg1 from "../assets/images/blog1.png";
 import blogImg2 from "../assets/images/blog2.png";
 import blogImg3 from "../assets/images/blog3.png";
 import blogImg4 from "../assets/images/blog4.png";
+import blogImg6 from "../assets/images/blog6.png";
 
 const categories = ["All", "Achievement", "Data Analysis", "Machine Learning", "Model Context Protocol"];
 
@@ -31,8 +32,19 @@ const posts = [
     link: "https://medium.com/@contactwitharunlaudari/mcp-the-usb-c-for-ai-why-models-needed-a-standard-bridge-to-real-world-context-831638a5d877",
   },
   {
-    id: "b2",
+    id: "b6",
     priority: 3,
+    image: blogImg6,
+    title: "MCP Explained: The Universal Protocol Powering the Next Generation of AI Agents (2026 Edition)",
+    excerpt: "How the Model Context Protocol (MCP) is standardizing connections between LLMs and external tools, data, and workflows — from architecture details and 2026 spec updates to FastMCP examples and why this open standard won the AI integration war.",
+    date: "Jun 29, 2026",
+    category: "Model Context Protocol",
+    source: "Medium",
+    link:"https://medium.com/@contactwitharunlaudari/mcp-explained-the-universal-protocol-powering-the-next-generation-of-ai-agents-2026-edition-89dc11cea9e3?sharedUserId=contactwitharunlaudari"
+    },
+  {
+    id: "b2",
+    priority: 4,
     image: blogImg2,
     title: "Beginner's Guide to Data Analysis: The Foundation of AI and ML",
     excerpt: "A comprehensive beginner's guide covering data types, the data analysis process, key concepts, and a roadmap to start learning — based on my hands-on experience with Pandas, NumPy, and real Kaggle datasets.",
@@ -43,7 +55,7 @@ const posts = [
   },
   {
     id: "b3",
-    priority: 4,
+    priority: 5,
     image: blogImg3,
     title: "The Ultimate Beginner's Guide to Machine Learning: From Pipeline to Advanced Concepts",
     excerpt: "A comprehensive theoretical guide covering the ML pipeline, types of learning, regression vs classification, popular models, overfitting/underfitting, cross-validation, and evaluation metrics — all explained with real-world use cases.",
