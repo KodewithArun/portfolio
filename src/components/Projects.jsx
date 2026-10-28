@@ -121,7 +121,7 @@ const projects = [
         summary: "Multi-tenant SaaS platform with menus, orders, reservations, Stripe payments, and tenant-level analytics.",
         image: restaurantSaaSImg,
         imageFit: "contain",
-        technologies: ["Next.js", "React", "MongoDB", "Tailwind CSS", "Stripe", "Socket.IO"],
+        technologies: ["Next.js", "React", "Django", "Django REST Framework", "MongoDB", "Tailwind CSS", "Stripe", "Socket.IO"],
     }
 ];
 
