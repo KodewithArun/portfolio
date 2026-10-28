@@ -5,10 +5,34 @@ import blogImg2 from "../assets/images/blog2.png";
 import blogImg3 from "../assets/images/blog3.png";
 import blogImg4 from "../assets/images/blog4.png";
 import blogImg6 from "../assets/images/blog6.png";
+import blogImg7 from "../assets/images/blog7.jpg";
+import blogImg8 from "../assets/images/blog8.png";
 
-const categories = ["All", "Achievement", "Data Analysis", "Machine Learning", "Model Context Protocol"];
+const categories = ["All", "Achievement", "Data Analysis", "Machine Learning", "Model Context Protocol", "AI Engineering", "RAG"];
 
 const posts = [
+  {
+    id: "b7",
+    priority: 2,
+    image: blogImg7,
+    title: "Loop Engineering: The AI Skill Nobody Told You That You'd Need Next",
+    excerpt: "Why the smartest people in AI just stopped writing prompts. From prompt to context, agent, and harness engineering — loop engineering is the next stage: designing self-running systems that prompt, verify, reflect, and improve on their own, without a human in the loop.",
+    date: "Aug 3, 2026",
+    category: "AI Engineering",
+    source: "Medium",
+    link: "https://medium.com/@contactwitharunlaudari/loop-engineering-the-ai-skill-nobody-told-you-that-youd-need-next-a05a5f07878c",
+  },
+  {
+    id: "b8",
+    priority: 3,
+    image: blogImg8,
+    title: "From RAG to LLM Wiki: Why Andrej Karpathy's Idea Could Change How AI Learns Forever",
+    excerpt: "RAG answers 'what's relevant to this query.' The LLM Wiki pattern — seeded by Karpathy's llm-wiki idea — answers a deeper question: 'what do I actually know, and does it hold together?' A deep dive into compiling knowledge instead of re-deriving it on every query.",
+    date: "Jul 20, 2026",
+    category: "RAG",
+    source: "Medium",
+    link: "https://medium.com/@contactwitharunlaudari/from-rag-to-llm-wiki-why-andrej-karpathys-idea-could-change-how-ai-learns-forever-9c9735cf8ac3",
+  },
   {
     id: "b1",
     priority: 1,
@@ -22,7 +46,7 @@ const posts = [
   },
   {
     id: "b4",
-    priority: 2,
+    priority: 4,
     image: blogImg4,
     title: "MCP: The USB-C for AI — Why Models Needed a Standard Bridge to Real-World Context",
     excerpt: "LLMs solved intelligence. MCP solves access. A deep dive into why Model Context Protocol exists — from the copy-paste hell era to Anthropic's open standard that gives AI models standardized, secure access to real-world tools and data.",
@@ -33,7 +57,7 @@ const posts = [
   },
   {
     id: "b6",
-    priority: 3,
+    priority: 5,
     image: blogImg6,
     title: "MCP Explained: The Universal Protocol Powering the Next Generation of AI Agents (2026 Edition)",
     excerpt: "How the Model Context Protocol (MCP) is standardizing connections between LLMs and external tools, data, and workflows — from architecture details and 2026 spec updates to FastMCP examples and why this open standard won the AI integration war.",
@@ -44,7 +68,7 @@ const posts = [
     },
   {
     id: "b2",
-    priority: 4,
+    priority: 6,
     image: blogImg2,
     title: "Beginner's Guide to Data Analysis: The Foundation of AI and ML",
     excerpt: "A comprehensive beginner's guide covering data types, the data analysis process, key concepts, and a roadmap to start learning — based on my hands-on experience with Pandas, NumPy, and real Kaggle datasets.",
@@ -55,7 +79,7 @@ const posts = [
   },
   {
     id: "b3",
-    priority: 5,
+    priority: 7,
     image: blogImg3,
     title: "The Ultimate Beginner's Guide to Machine Learning: From Pipeline to Advanced Concepts",
     excerpt: "A comprehensive theoretical guide covering the ML pipeline, types of learning, regression vs classification, popular models, overfitting/underfitting, cross-validation, and evaluation metrics — all explained with real-world use cases.",

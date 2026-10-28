@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiStar } from "react-icons/fi";
 import clientBala from "../assets/images/clientbalajoshi.png";
 import inspiringlabLogo from "../assets/images/InspiringLab.png";
+import elevatexCo from "../assets/images/elevatex-co.svg";
 
 const testimonials = [
   {
@@ -21,6 +22,16 @@ const testimonials = [
     category: 'Company',
     rating: 5,
     quote: "During his internship, Arun successfully developed and implemented advanced AI solutions involving Agentic AI, RAG architectures, and automation workflows. His technical competence, creativity, and commitment to excellence left a lasting positive impact on our organization."
+  },
+  {
+    id: 't3',
+    name: 'Elevate-X Innovation',
+    image: elevatexCo,
+    logoBg: 'bg-white',
+    role: 'AI Engineer & Software Developer',
+    category: 'Company',
+    rating: 5,
+    quote: "Arun was a key part of our AI product work, contributing to everything from the enterprise LLM Wiki and semantic RAG pipelines to scalable APIs built with Django, DRF, Django Ninja, and FastAPI. He has a real talent for turning complex requirements into reliable, production-ready systems, and he made a lasting impact on our team."
   }
 ];
 
@@ -53,7 +64,7 @@ export default function Testimonial() {
             >
               <div className="flex items-start gap-4 p-6 pb-4">
                 {t.image && (
-                  <div className={`w-11 h-11 ${t.category === 'Company' ? 'rounded-full' : 'rounded-full'} bg-black flex items-center justify-center overflow-hidden shrink-0 ${t.category === 'Company' ? 'p-1.5 border border-gray-200' : ''}`}>
+                  <div className={`w-11 h-11 rounded-full ${t.logoBg || 'bg-black'} flex items-center justify-center overflow-hidden shrink-0 ${t.category === 'Company' ? 'p-1.5 border border-gray-200' : ''}`}>
                     <img
                       src={t.image}
                       alt={t.name}

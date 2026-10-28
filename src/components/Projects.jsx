@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { FiGithub, FiCode } from "react-icons/fi";
+import { useState } from "react";
+import { FiCode, FiExternalLink } from "react-icons/fi";
 import ruralHealthAIImg from "../assets/images/ruralhealthai.png";
 import agenticRagImg from "../assets/images/agenticragusinglanggraph.png";
 import sqlsAgentImg from "../assets/images/sqlsagent.png";
@@ -8,14 +8,15 @@ import movierecImg from "../assets/images/movierecommand.png";
 import churnImg from "../assets/images/customerchurnusingann.jpeg";
 import segKnnImg from "../assets/images/customersegmanation singknn.png";
 import diabetesImg from "../assets/images/dibatiesuisnglogistic.png";
-
-const projectCategories = ["All", "AI Agents & RAG Pipelines", "Machine Learning & Data Science"];
+import namunaBakeryImg from "../assets/images/namunabakery.png";
+import schoolCmsImg from "../assets/images/schoolcms.png";
+import restaurantSaaSImg from "../assets/images/multitanentresturentmanagementsystem.png";
 
 const projects = [
     {
         id: "rural-health-ai",
         order: 1,
-        category: "AI Agents & RAG Pipelines",
+        categories: ["Artificial Intelligence", "Full Stack"],
         title: "Rural Health AI — Smart Healthcare Solutions",
         summary: "AI-driven platform improving rural healthcare access, triage, and scheduling.",
         image: ruralHealthAIImg,
@@ -25,7 +26,7 @@ const projects = [
     {
         id: "agentic-rag",
         order: 2,
-        category: "AI Agents & RAG Pipelines",
+        categories: ["Artificial Intelligence", "Full Stack"],
         title: "Agentic RAG Using LangGraph",
         summary: "Adaptive RAG pipeline using LangGraph agents for context-aware retrieval.",
         image: agenticRagImg,
@@ -35,7 +36,7 @@ const projects = [
     {
         id: "sql-sage",
         order: 6,
-        category: "AI Agents & RAG Pipelines",
+        categories: ["Artificial Intelligence", "Data Analysis"],
         title: "SQL Sage — Intelligent DB Agent",
         summary: "Natural-language to SQL assistant that generates optimized, validated queries.",
         image: sqlsAgentImg,
@@ -45,7 +46,7 @@ const projects = [
     {
         id: "multi-doc-chatbot",
         order: 7,
-        category: "AI Agents & RAG Pipelines",
+        categories: ["Artificial Intelligence"],
         title: "Multi-Document Chatbot",
         summary: "Chatbot that answers queries across PDFs, DOCX, PPTX, XLSX, Markdown and more.",
         image: multidocImg,
@@ -55,7 +56,7 @@ const projects = [
     {
         id: "churn-prediction",
         order: 5,
-        category: "Machine Learning & Data Science",
+        categories: ["Machine Learning", "Data Analysis"],
         title: "Customer Churn Prediction",
         summary: "ANN-based churn prediction with preprocessing and a Streamlit dashboard.",
         image: churnImg,
@@ -65,7 +66,7 @@ const projects = [
     {
         id: "movie-rec",
         order: 4,
-        category: "Machine Learning & Data Science",
+        categories: ["Machine Learning", "Full Stack"],
         title: "Movie Recommendation System",
         summary: "Content-based recommender using TF-IDF and TMDB metadata for posters.",
         image: movierecImg,
@@ -75,7 +76,7 @@ const projects = [
     {
         id: "customer-seg",
         order: 3,
-        category: "Machine Learning & Data Science",
+        categories: ["Machine Learning", "Data Analysis"],
         title: "Customer Segmentation",
         summary: "K-Means clustering pipeline for customer segmentation and visualization.",
         image: segKnnImg,
@@ -85,13 +86,58 @@ const projects = [
     {
         id: "diabetes-pred",
         order: 8,
-        category: "Machine Learning & Data Science",
+        categories: ["Machine Learning", "Data Analysis", "Full Stack"],
         title: "Diabetes Risk Prediction",
         summary: "Logistic regression model for diabetes risk prediction, served via Flask.",
         image: diabetesImg,
         github: "https://github.com/arun/diabetes-pred",
         technologies: ["Python", "Scikit-learn", "Pandas", "Seaborn", "Flask"],
+    },
+    {
+        id: "namuna-bakery",
+        order: 9,
+        categories: ["E-Commerce", "Full Stack"],
+        title: "Namuna Bakery — E-Commerce Platform",
+        summary: "Full-stack bakery store with product catalog, search, cart, customer accounts, and order management.",
+        image: namunaBakeryImg,
+        live: "https://www.namunabakery.com/",
+        technologies: ["Laravel", "PHP", "Tailwind CSS", "JavaScript", "GSAP", "Swiper"],
+    },
+    {
+        id: "school-cms",
+        order: 10,
+        categories: ["Content Management System", "Full Stack"],
+        title: "Gyan Jyoti Boarding School — Content Management System",
+        summary: "Django-powered school content management system with admissions, academics, gallery, news, and role-based admin.",
+        image: schoolCmsImg,
+        imageFit: "contain",
+        technologies: ["Django", "Python", "Django Admin", "HTML", "CSS", "JavaScript"],
+    },
+    {
+        id: "restaurant-saas",
+        order: 11,
+        categories: ["E-Commerce", "Full Stack", "Data Analysis"],
+        title: "Multi-Tenant Restaurant Management System",
+        summary: "Multi-tenant SaaS platform with menus, orders, reservations, Stripe payments, and tenant-level analytics.",
+        image: restaurantSaaSImg,
+        imageFit: "contain",
+        technologies: ["Next.js", "React", "MongoDB", "Tailwind CSS", "Stripe", "Socket.IO"],
     }
+];
+
+const categoryOrder = [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Data Analysis",
+    "E-Commerce",
+    "Content Management System",
+    "Full Stack",
+];
+const usedCategories = Array.from(new Set(projects.flatMap((p) => p.categories)));
+const projectCategories = [
+    "All",
+    ...categoryOrder,
+    ...usedCategories.filter((cat) => !categoryOrder.includes(cat)).sort((a, b) => a.localeCompare(b)),
 ];
 
 export default function Projects() {
@@ -100,7 +146,8 @@ export default function Projects() {
     const pageSize = 4;
 
     const sorted = [...projects].sort((a, b) => a.order - b.order);
-    const filtered = activeCategory === "All" ? sorted : sorted.filter(p => p.category === activeCategory);
+    const filtered =
+        activeCategory === "All" ? sorted : sorted.filter((p) => p.categories.includes(activeCategory));
     const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
     const startIndex = (page - 1) * pageSize;
     const visibleProjects = filtered.slice(startIndex, startIndex + pageSize);
@@ -124,10 +171,16 @@ export default function Projects() {
                 </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 mb-10">
+            <div
+                role="tablist"
+                aria-label="Project categories"
+                className="flex flex-wrap items-center gap-2 mb-10"
+            >
                 {projectCategories.map((cat) => (
                     <button
                         key={cat}
+                        role="tab"
+                        aria-selected={activeCategory === cat}
                         onClick={() => handleCategoryChange(cat)}
                         className={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full transition-colors ${
                             activeCategory === cat
@@ -140,39 +193,57 @@ export default function Projects() {
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-6 lg:gap-8">
                 {visibleProjects.map((project) => {
                     const maxTech = 7;
                     const displayedTech = project.technologies.slice(0, maxTech);
                     const hasMoreTech = project.technologies.length > maxTech;
+                    const projectUrl = project.live || project.github;
+                    const isLive = Boolean(project.live);
+                    const mediaProps = projectUrl
+                        ? { href: projectUrl, target: "_blank", rel: "noopener noreferrer" }
+                        : {};
+                    const MediaWrapper = projectUrl ? "a" : "div";
 
                     return (
                         <div
                             key={project.id}
-                            className="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:border-gray-200 hover:shadow-md transition-all duration-300"
+                            className="group flex flex-col h-full bg-white border border-gray-100 rounded-2xl overflow-hidden hover:border-gray-200 hover:shadow-md transition-all duration-300"
                         >
-                            <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="relative w-full h-44 sm:h-52 bg-gray-50 overflow-hidden block"
+                            <MediaWrapper
+                                {...mediaProps}
+                                className="relative w-full aspect-video bg-gray-50 overflow-hidden block"
                             >
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className={`w-full h-full ${
+                                        project.imageFit === "contain"
+                                            ? "object-contain"
+                                            : "object-cover transition-transform duration-500 group-hover:scale-105"
+                                    }`}
                                 />
-                                <div className="absolute inset-0 bg-blue-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                                    <span className="flex items-center gap-2 bg-white text-blue-950 px-4 py-2 rounded-full text-sm font-semibold">
-                                        <FiCode size={14} /> View on GitHub
-                                    </span>
-                                </div>
-                            </a>
+                                {projectUrl && (
+                                    <div className="absolute inset-0 bg-blue-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                                        <span className="flex items-center gap-2 bg-white text-blue-950 px-4 py-2 rounded-full text-sm font-semibold">
+                                            {isLive ? <FiExternalLink size={14} /> : <FiCode size={14} />}
+                                            {isLive ? "Visit Website" : "View on GitHub"}
+                                        </span>
+                                    </div>
+                                )}
+                            </MediaWrapper>
 
-                            <div className="p-5 sm:p-6 flex flex-col flex-1">
-                                <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-950 bg-blue-50 px-2 py-1 rounded-full self-start mb-3">
-                                    {project.category}
-                                </span>
+                            <div className="p-5 sm:p-6 flex flex-col flex-1 min-h-[240px]">
+                                <div className="flex flex-wrap gap-1.5 mb-3">
+                                    {project.categories.map((category) => (
+                                        <span
+                                            key={category}
+                                            className="text-[10px] font-semibold uppercase tracking-wider text-blue-950 bg-blue-50 px-2 py-1 rounded-full"
+                                        >
+                                            {category}
+                                        </span>
+                                    ))}
+                                </div>
                                 <h3 className="text-base sm:text-lg font-semibold text-blue-950 mb-2">
                                     {project.title}
                                 </h3>

@@ -13,11 +13,11 @@ const sections = [
         icon: <FiUser />,   
         content: {
             heading: "AI Engineer & Backend Developer",
-            description: `I design and build intelligent AI systems and high-performance backend infrastructures that turn complex requirements into secure, scalable, and production-ready applications.
+            description: `I design and build intelligent AI systems and high-performance backend infrastructure, turning complex requirements into secure, scalable, production-ready applications.
 
-My core expertise spans Generative AI (GenAI) solutions, advanced Retrieval-Augmented Generation (RAG) pipelines, Multi-Agent ecosystems, and MCP (Model Context Protocol) servers. On the systems layer, I architect secure Restful APIs using Django Rest Framework (DRF) and optimize high-throughput database schemas designed for efficiency and horizontal scalability.
+My expertise spans Generative AI (GenAI), advanced Retrieval-Augmented Generation (RAG) pipelines, multi-agent ecosystems, and MCP (Model Context Protocol) servers. On the systems side, I architect secure RESTful APIs with Django REST Framework (DRF), Django Ninja, and FastAPI; design high-throughput PostgreSQL schemas for efficiency and horizontal scale; and containerize services with Docker for consistent, dependable deployments.
 
-Driven by data analysis and machine learning best practices, I focus on delivering low-latency, resilient, and enterprise-grade software built for real-world impact.`,
+Guided by data analysis and machine learning best practices, I focus on shipping low-latency, resilient, enterprise-grade software that delivers measurable real-world impact.`,
         },
     },
     {
@@ -129,7 +129,7 @@ export default function AboutMeSection() {
                                         Multi-Agent AI Orchestration
                                     </span>
                                     <span className="px-3.5 py-1.5 rounded-xl bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-700 hover:border-blue-950 hover:bg-white transition-all duration-300 cursor-default shadow-sm hover:scale-[1.02]">
-                                        Scalable Backend APIs & DRF
+                                        Django, DRF, Ninja & FastAPI
                                     </span>
                                 </div>
                             </div>

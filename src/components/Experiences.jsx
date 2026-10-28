@@ -1,26 +1,30 @@
-import { FiCalendar, FiMapPin, FiExternalLink, FiBriefcase, FiArrowRight } from "react-icons/fi";
-import technestLogo from "../assets/images/Technestlogo.png";
+import { FiMapPin, FiExternalLink, FiBriefcase } from "react-icons/fi";
+import elevatexCo from "../assets/images/elevatex-co.svg";
 import inspiringlabLogo from "../assets/images/InspiringLab.png";
 
 const experiences = [
     {
-        id: "technest",
-        role: "AI Backend Engineer",
-        company: "Technest Innovation",
-        logo: technestLogo,
-        logoClassName: "scale-[1.6]",
-        logoBg: "bg-white border-gray-200/80",
-        duration: "Mar 2026 – Present",
-        location: "Chitwan, Nepal",
-        website: "https://technestinnovations.com.np/",
-        tags: ["RAG Systems", "Multi-Agent Networks", "Django", "DRF REST APIs", "LLM APIs", "PostgreSQL"],
-        description: "Architecting and implementing enterprise-grade AI backends, complex Retrieval-Augmented Generation (RAG) systems, and multi-agent coordination pipelines using Django and Django REST Framework (DRF).",
+        id: "elevatex",
+        role: "AI Engineer & Software Developer",
+        company: "Elevate-X Innovation Pvt. Ltd.",
+        logo: elevatexCo,
+        fillLogo: true,
+        logoBoxClassName: "h-12 w-48",
+        logoOffsetClassName: "-ml-9",
+        logoBg: "bg-white",
+        duration: "Jun 2026 – Sep 2026",
+        location: "Bharatpur, Chitwan, Nepal",
+        website: "https://elevate-x.co",
+        tags: ["Django", "DRF", "Django Ninja", "FastAPI", "PostgreSQL", "Agentic AI", "RAG", "MCP", "LLMs", "Docker", "Redis", "Celery"],
+        description: "Engineered AI/ML and Generative AI solutions involving Agentic AI, Retrieval-Augmented Generation (RAG), LLM-based applications, and intelligent knowledge systems.",
         bullets: [
-            "Designing and optimizing high-performance RAG (Retrieval-Augmented Generation) pipelines for smart search and document intelligence.",
-            "Engineering scalable multi-agent systems and task scheduling backends utilizing Django & Celery.",
-            "Developing secure, low-latency RESTful APIs with Django REST Framework (DRF) handling intensive data flows.",
-            "Integrating advanced language models and LLM APIs with real-time response streaming and robust error handling.",
-            "Implementing PostgreSQL database schemas, custom indexes, and query optimizations for high-throughput AI workloads."
+            "Developed an enterprise LLM Wiki and knowledge-grounding platform for structured knowledge management, semantic retrieval, contextual understanding, and automated documentation generation.",
+            "Built semantic recommendation and matching pipelines using open-source LLMs, vector databases, embeddings, and intelligent scoring algorithms for candidate and job-profile analysis.",
+            "Designed and developed scalable RESTful backend APIs using Django, Django REST Framework (DRF), Django Ninja, and FastAPI, with PostgreSQL for relational data management and schema design.",
+            "Implemented AI-powered backend workflows integrating LLM inference, RAG pipelines, vector search, prompt engineering, and agent-based architectures for production-oriented applications.",
+            "Developed MCP-based integrations and AI agent workflows to connect language models with external tools, APIs, knowledge sources, and application services.",
+            "Worked with Docker, Git, Redis, Celery, and modern Python-based backend technologies to build maintainable, scalable, and asynchronous software systems.",
+            "Contributed to end-to-end software development, including system architecture, backend engineering, API development, database integration, AI integration, testing, and deployment."
         ]
     },
     {
@@ -28,7 +32,7 @@ const experiences = [
         role: "AI/ML Intern",
         company: "Inspiring Lab Pvt. Ltd.",
         logo: inspiringlabLogo,
-        logoBg: "bg-black border-neutral-900",
+        logoBg: "bg-black",
         duration: "Nov 2025 – Feb 2026",
         location: "Kathmandu, Nepal",
         website: "https://inspiringlab.com.np",
@@ -75,11 +79,11 @@ export default function Experiences() {
                         {/* LEFT COLUMN: Timeframe & Metadata */}
                         <div className="lg:col-span-4 space-y-4">
                             {exp.logo && (
-                                <div className={`h-12 w-36 flex items-center justify-center rounded-xl p-2.5 shadow-sm border overflow-hidden ${exp.logoBg || "bg-black border-neutral-800"}`}>
+                                <div className={`${exp.logoBoxClassName || "h-12 w-36"} ${exp.logoOffsetClassName || ""} flex items-center justify-center rounded-xl p-2.5 overflow-hidden ${exp.logoBg || "bg-black"}`}>
                                     <img
                                         src={exp.logo}
                                         alt={`${exp.company} Logo`}
-                                        className={`h-full w-auto object-contain ${exp.logoClassName || ""}`}
+                                        className={`${exp.fillLogo ? "w-full h-full" : "h-full w-auto"} object-contain ${exp.logoClassName || ""}`}
                                     />
                                 </div>
                             )}

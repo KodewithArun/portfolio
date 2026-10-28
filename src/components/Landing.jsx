@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import arunprofile from "../assets/images/arunprofile.png";
+import logo from "../assets/images/logo.png";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -157,7 +157,7 @@ export function Hero() {
           <span className="w-2 h-2 bg-green-500 rounded-full" /> Available for work
         </div>
         <div className="w-full h-[360px] sm:h-[480px] lg:h-[640px] bg-transparent rounded-3xl flex items-center justify-center text-gray-400 overflow-hidden">
-          <img src={arunprofile} alt="Hero Image" className="w-full h-full object-cover rounded-3xl" />
+          <img src={logo} alt="Hero Image" className="w-full h-full object-cover rounded-3xl" />
         </div>
       </div>
     </section>
