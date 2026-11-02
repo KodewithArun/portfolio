@@ -11,6 +11,7 @@ import diabetesImg from "../assets/images/dibatiesuisnglogistic.png";
 import namunaBakeryImg from "../assets/images/namunabakery.png";
 import schoolCmsImg from "../assets/images/schoolcms.png";
 import restaurantSaaSImg from "../assets/images/multitanentresturentmanagementsystem.png";
+import momentsByKripanaImg from "../assets/images/momentsbykripana.png";
 
 const projects = [
     {
@@ -122,6 +123,15 @@ const projects = [
         image: restaurantSaaSImg,
         imageFit: "contain",
         technologies: ["Next.js", "React", "Django", "Django REST Framework", "MongoDB", "Tailwind CSS", "Stripe", "Socket.IO"],
+    },
+    {
+        id: "moments-by-kripana",
+        order: 12,
+        categories: ["Portfolio", "Frontend"],
+        title: "Moments by Kripana — Wedding Content Creator Portfolio",
+        summary: "Elegant portfolio and booking website for a wedding content creator and event coordinator, with reels, services, reviews, and date inquiry flows.",
+        image: momentsByKripanaImg,
+        technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
     }
 ];
 
@@ -131,6 +141,8 @@ const categoryOrder = [
     "Data Analysis",
     "E-Commerce",
     "Content Management System",
+    "Portfolio",
+    "Frontend",
     "Full Stack",
 ];
 const usedCategories = Array.from(new Set(projects.flatMap((p) => p.categories)));
