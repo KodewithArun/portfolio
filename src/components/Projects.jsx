@@ -127,11 +127,11 @@ const projects = [
     {
         id: "moments-by-kripana",
         order: 12,
-        categories: ["Portfolio", "Frontend"],
+        categories: ["Portfolio", "Full Stack"],
         title: "Moments by Kripana — Wedding Content Creator Portfolio",
         summary: "Elegant portfolio and booking website for a wedding content creator and event coordinator, with reels, services, reviews, and date inquiry flows.",
         image: momentsByKripanaImg,
-        technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
+        technologies: ["Django", "Python", "Tailwind CSS", "JavaScript"],
     }
 ];
 
@@ -142,7 +142,6 @@ const categoryOrder = [
     "E-Commerce",
     "Content Management System",
     "Portfolio",
-    "Frontend",
     "Full Stack",
 ];
 const usedCategories = Array.from(new Set(projects.flatMap((p) => p.categories)));
